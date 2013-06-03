@@ -1,5 +1,6 @@
 Railsweb::Application.routes.draw do
   resources :home
+  resources :posts
 
   match '/home/:id', :controller=>'home', :action=>'show'
 
