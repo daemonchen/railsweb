@@ -10,7 +10,10 @@
       </ul>
     </div>
   <% end %>
-
+<!-- <input type='text' name='post[name]'></input> -->
+  <%= f.text_field :name, :class => 'test' %>
+  <%= f.text_field :title %>
+  <%= f.text_area :detail %>
   <div class="actions">
     <%= f.submit %>
   </div>

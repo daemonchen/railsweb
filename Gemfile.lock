@@ -105,6 +105,7 @@ GEM
       rspec (>= 2.0)
 
 PLATFORMS
+  ruby
   x86-mingw32
 
 DEPENDENCIES

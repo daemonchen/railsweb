@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   def index
     currentPost = Post.new
     currentPost.user_token = '255'
+    # currentPost.id = '11'
     currentPost.save
     puts currentPost
     puts '>>>'
@@ -18,7 +19,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    # @post = Post.find(params[:id])
+    @post = Post.find(params[:id])
 
     # respond_to do |format|
     #   format.html # show.html.erb
@@ -39,7 +40,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    # @post = Post.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   # POST /posts
@@ -61,17 +62,18 @@ class PostsController < ApplicationController
   # PUT /posts/1
   # PUT /posts/1.json
   def update
-    # @post = Post.find(params[:id])
+    @post = Post.find(params[:id])
 
-    # respond_to do |format|
-    #   if @post.update_attributes(params[:post])
-    #     format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-    #     format.json { head :no_content }
-    #   else
-    #     format.html { render action: "edit" }
-    #     format.json { render json: @post.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    respond_to do |format|
+      puts '---------------', params
+      if @post.update_attributes(params[:post])
+        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # DELETE /posts/1
